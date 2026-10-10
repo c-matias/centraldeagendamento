@@ -1,0 +1,1 @@
+import{i as t,aD as i,a as r,g as s,o as d}from"./newrelic-BzfYwGNj.js";import{V as l,b as m}from"./webdriver-detection-BkWmm2dT.js";const n=new l(m.LOAD_TIME);if(t){const a=s.performance;i(()=>{setTimeout(()=>{var e;if(n.isValid||!a)return;const o=r();n.update({value:o?o.loadEventEnd:((e=a.timing)==null?void 0:e.loadEventEnd)-d})},0)},!0)}export{n as l};
