@@ -1,0 +1,24 @@
+name: Correção
+description: Algo está errado, partido ou desalinhado
+title: '[Correção] '
+labels:
+- correcao
+body:
+- type: textarea
+  id: problema
+  attributes:
+    label: O que está errado?
+    description: Descreva o problema e onde acontece (secção, dispositivo/ecrã, navegador).
+  validations:
+    required: true
+- type: textarea
+  id: passos
+  attributes:
+    label: Como reproduzir
+    description: Passos ou captura de ecrã.
+- type: textarea
+  id: esperado
+  attributes:
+    label: Resultado esperado / critérios de aceitação
+  validations:
+    required: true

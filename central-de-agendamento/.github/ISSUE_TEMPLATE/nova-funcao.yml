@@ -1,0 +1,26 @@
+name: Nova função
+description: Algo que ainda não existe no site
+title: '[Nova função] '
+labels:
+- nova-funcao
+body:
+- type: textarea
+  id: objetivo
+  attributes:
+    label: Objectivo
+    description: Que problema resolve / que valor traz ao visitante ou à empresa.
+  validations:
+    required: true
+- type: textarea
+  id: descricao
+  attributes:
+    label: Descrição e conteúdo necessário
+    description: 'Textos, imagens e dados necessários. Não inventar informação: marcar o que falta como pendente.'
+  validations:
+    required: true
+- type: textarea
+  id: criterios
+  attributes:
+    label: Critérios de aceitação
+  validations:
+    required: true
