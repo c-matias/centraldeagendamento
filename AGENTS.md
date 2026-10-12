@@ -105,14 +105,13 @@ Detalhes e comandos em [`docs/QUALIDADE-E-OBSERVABILIDADE.md`](docs/QUALIDADE-E-
 - **Manter a Política de Privacidade verdadeira:** ao activar um fornecedor de observabilidade/analytics, adicionar cookies, mudar o formulário (hoje abre o WhatsApp e não guarda dados) ou integrar um serviço novo, actualizar as secções *Dados*, *Cookies* e *Serviços de terceiros* e a data, no mesmo PR.
 - O footer de todas as páginas tem os links legais (`LEGAL_LINKS` em `site.ts`).
 
-## 8. Galeria (carrossel com Google Drive)
-Detalhes e configuração em [`docs/GALERIA-GOOGLE-DRIVE.md`](docs/GALERIA-GOOGLE-DRIVE.md).
-- **Segredos só no servidor:** `GOOGLE_DRIVE_API_KEY` (e `GOOGLE_DRIVE_FOLDER_ID`) vivem nas variáveis do Netlify e só são lidas por `netlify/functions/*`. **Nunca** com prefixo `VITE_`, nunca no `src/`, no HTML ou em ficheiros commitados (há testes que falham se aparecerem chaves `AIza…`).
-- O frontend só fala com `/api/gallery` e `/api/gallery/image`. **Nunca** usar links de partilha do Drive, `drive.google.com/uc`, `googleusercontent.com` nem URLs temporários de miniaturas como `src`.
-- Lógica do servidor em `netlify/lib/drive.ts` (testada com respostas simuladas); cliente em `src/lib/gallery.ts` + `src/components/useGallery.ts`; UI em `Gallery.tsx`, `Carousel.tsx`, `Lightbox.tsx`. Configuração visual em `src/config/gallery.ts`.
-- A função só serve ficheiros que estão na pasta configurada e só JPG/PNG/WebP. Não alargar isto sem rever a segurança.
-- Estados obrigatórios (todos com teste): a carregar (skeleton), imagens, pasta vazia, erro (discreto, com "Tentar novamente"), imagem partida, cache local. Sem vermelho; só a paleta azul/branca.
-- Funções do Netlify só funcionam com deploy por Git/CLI (não com Netlify Drop).
+## 8. Galeria (carrossel) e Tabela de Preços — imagens locais
+Detalhes em [`docs/GALERIA-CARROSSEL.md`](docs/GALERIA-CARROSSEL.md).
+- **Origem das imagens:** ficheiros do projecto. Carrossel: `public/images/carousel/` (JPG/JPEG/PNG/WebP); tabela de preços: `public/images/tabela-precos.(jpg|jpeg|png|webp)`. **Sem API, chaves nem variáveis de ambiente.** Não reintroduzir Google Drive nem serviços externos para carregar imagens.
+- **Não há lista a manter:** `vite-plugins/site-assets.ts` descobre os ficheiros no build (módulos virtuais `virtual:carousel-images` e `virtual:price-table`). Adicionar imagem = pôr o ficheiro na pasta + deploy. Não inventar nomes de imagens nem pôr imagens fictícias na pasta (as de teste vivem em `e2e/fixtures/`).
+- UI: `Gallery.tsx`, `Carousel.tsx`, `Lightbox.tsx`, `PriceTable.tsx`; configuração visual em `src/config/gallery.ts`. A tabela de preços é **sempre a imagem original** (nunca recriada em HTML) e a secção só aparece se o ficheiro existir.
+- Preços dos pacotes: `PACKAGES[].price` em `src/config/site.ts`. Alterar só com confirmação do dono do projecto.
+- Pedir ao utilizador imagens leves (≤1600 px, <250 KB). Estados testados: com imagens, pasta vazia, imagem em falta (alternativa visível), ampliação, teclado, mobile. Sem vermelho.
 
 ## 9. Checklist antes de pedir merge
 - [ ] Existe Issue e o PR tem `Closes #n`
