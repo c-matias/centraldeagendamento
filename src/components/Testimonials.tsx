@@ -26,7 +26,7 @@ export default function Testimonials() {
         onFocus={() => setPaused(true)}
         onBlur={() => setPaused(false)}
       >
-        <div className="overflow-hidden rounded-3xl border border-brand-line bg-white shadow-card">
+        <div className="overflow-hidden rounded-3xl border border-brand-line bg-surface shadow-card">
           <AnimatePresence mode="wait" initial={false}>
             <motion.figure
               key={i}
@@ -37,14 +37,14 @@ export default function Testimonials() {
               aria-live="polite"
               className="p-6 text-left sm:p-8"
             >
-              <div className="flex gap-1 text-brand-royal" role="img" aria-label={`${t.stars} estrelas`}>
+              <div className="flex gap-1 text-fg-royal" role="img" aria-label={`${t.stars} estrelas`}>
                 {STAR_KEYS.slice(0, t.stars).map((k) => (
                   <Star key={k} size={18} fill="currentColor" />
                 ))}
               </div>
               <blockquote className="mt-3 text-base sm:text-lg">“{t.text}”</blockquote>
               <figcaption className="mt-5 flex items-center gap-3">
-                <span className="grid h-11 w-11 place-items-center rounded-full bg-brand-soft font-bold text-brand">
+                <span className="grid h-11 w-11 place-items-center rounded-full bg-brand-soft font-bold text-fg-brand">
                   {t.name.replace(/[[\]]/g, "")[0]}
                 </span>
                 <span>
@@ -73,7 +73,7 @@ export default function Testimonials() {
             type="button"
             aria-label="Testemunho anterior"
             onClick={() => go(i - 1)}
-            className="grid h-10 w-10 place-items-center rounded-full border border-brand-line bg-white text-brand transition duration-150 hover:bg-brand-soft active:scale-95"
+            className="grid h-10 w-10 place-items-center rounded-full border border-brand-line bg-surface text-fg-brand transition duration-150 hover:bg-brand-soft active:scale-95"
           >
             <ChevronLeft size={20} />
           </button>
@@ -84,7 +84,7 @@ export default function Testimonials() {
             type="button"
             aria-label="Próximo testemunho"
             onClick={() => go(i + 1)}
-            className="grid h-10 w-10 place-items-center rounded-full border border-brand-line bg-white text-brand transition duration-150 hover:bg-brand-soft active:scale-95"
+            className="grid h-10 w-10 place-items-center rounded-full border border-brand-line bg-surface text-fg-brand transition duration-150 hover:bg-brand-soft active:scale-95"
           >
             <ChevronRight size={20} />
           </button>

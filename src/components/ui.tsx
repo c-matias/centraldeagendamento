@@ -15,8 +15,8 @@ export const Reveal = ({ children, className = "", delay = 0 }: { children: Reac
 
 const variants = {
   primary: "bg-brand text-white hover:bg-brand-royal",
-  outline: "border-2 border-brand text-brand hover:bg-brand-soft",
-  light: "bg-white text-brand hover:bg-brand-soft",
+  outline: "border-2 border-fg-brand text-fg-brand hover:bg-brand-soft",
+  light: "bg-white text-brand-dark hover:bg-[#EAF0FF]",
   ghostLight: "border-2 border-white text-white hover:bg-white/10",
 };
 type Props = ComponentProps<"a"> & { variant?: keyof typeof variants };
@@ -52,8 +52,8 @@ export const Section = ({
   <section id={id} className={`py-14 md:py-20 ${className}`}>
     <Container>
       <Reveal className={center ? "text-center" : ""}>
-        {eyebrow && <p className="mb-3 text-sm font-semibold text-brand-royal">{eyebrow}</p>}
-        <h2 className="text-3xl text-brand md:text-4xl">{title}</h2>
+        {eyebrow && <p className="mb-3 text-sm font-semibold text-fg-royal">{eyebrow}</p>}
+        <h2 className="text-3xl text-fg-brand md:text-4xl">{title}</h2>
         {lead && <p className={`mt-3 max-w-xl text-lg text-brand-muted ${center ? "mx-auto" : ""}`}>{lead}</p>}
       </Reveal>
       {children}

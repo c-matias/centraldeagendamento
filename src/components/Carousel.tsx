@@ -95,7 +95,7 @@ export default function Carousel({ slides, label, perView = GALLERY.slidesPerVie
   const slideBasis = `calc((100% - ${GAP * (per - 1)}px) / ${per})`;
   const dots = positions <= 8;
   const arrow =
-    "grid h-11 w-11 place-items-center rounded-full border border-brand-line bg-white text-brand shadow-card transition duration-150 hover:bg-brand-soft active:scale-95 disabled:pointer-events-none disabled:opacity-40";
+    "grid h-11 w-11 place-items-center rounded-full border border-brand-line bg-surface text-fg-brand shadow-card transition duration-150 hover:bg-brand-soft active:scale-95 disabled:pointer-events-none disabled:opacity-40";
 
   return (
     <section aria-roledescription="carrossel" aria-label={label} className="relative">

@@ -1,4 +1,4 @@
-import { LEGAL_LINKS, SITE } from "../config/site";
+import { LEGAL_LINKS, SITE, X_LABEL } from "../config/site";
 import { waLink } from "../lib/whatsapp";
 import { Logo } from "./Logo";
 import { Container } from "./ui";
@@ -38,6 +38,9 @@ export default function Footer({ basePath = "" }: { basePath?: string }) {
             </a>
             <a href={SITE.social.tiktok.url} target="_blank" rel="noopener" className={a}>
               TikTok
+            </a>
+            <a href={SITE.social.x.url} target="_blank" rel="noopener noreferrer" aria-label={X_LABEL} className={a}>
+              X
             </a>
             <a href={waLink()} target="_blank" rel="noopener" className={a}>
               WhatsApp

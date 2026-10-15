@@ -17,7 +17,7 @@ export default function About() {
           <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
         </div>
         <Reveal>
-          <h2 className="text-3xl text-brand md:text-4xl">Simplificamos o caminho para o seu processo.</h2>
+          <h2 className="text-3xl text-fg-brand md:text-4xl">Simplificamos o caminho para o seu processo.</h2>
           <p className="mt-4 text-lg text-brand-muted">
             A Central de Agendamento presta serviços de apoio a pessoas que necessitam de orientação e assistência durante o processo de
             agendamento relacionado com pedidos de visto.
@@ -29,7 +29,7 @@ export default function About() {
           <ul className="my-6 grid gap-4">
             {ABOUT_POINTS.map(({ icon: Icon, title, text }) => (
               <li key={title} className="flex gap-3.5">
-                <Icon className="mt-1 shrink-0 text-brand-royal" />
+                <Icon className="mt-1 shrink-0 text-fg-royal" />
                 <div>
                   <b>{title}</b>
                   <p className="text-sm text-brand-muted">{text}</p>

@@ -26,3 +26,6 @@ Configuração inicial no GitHub (etiquetas e Issues): `./scripts/setup-github.s
 
 ## Galeria e Tabela de Preços
 Imagens do próprio projecto: carrossel em `public/images/carousel/` e tabela em `public/images/tabela-precos.jpg` (sem API nem chaves). Ver [`docs/GALERIA-CARROSSEL.md`](docs/GALERIA-CARROSSEL.md).
+
+## Tema claro/escuro
+Botão sol/lua no cabeçalho; preferência guardada e, na 1.ª visita, a do sistema. Regras de cores/tokens na secção 9 do [`AGENTS.md`](AGENTS.md).

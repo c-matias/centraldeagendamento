@@ -53,8 +53,15 @@ test("pacotes: 5 cartões com WhatsApp e o nome do pacote", async ({ page }) => 
     expect(decodeURIComponent(hrefs[i])).toContain(`Pacote ${nome}`);
     expect(hrefs[i]).toMatch(/^https:\/\/wa\.me\/\d+\?text=/);
   }
-  for (const preco of ["25.000 Kz", "50.000 Kz", "130.000 Kz", "350.000 Kz", "400.000 Kz"])
-    await expect(page.locator("#pacotes").getByText(preco, { exact: true })).toBeVisible();
+  const precos = {
+    "Pacote Essencial": "25.000 Kz",
+    "Pacote Seguro": "50.000 Kz",
+    "Pacote Agendamento": "130.000 Kz",
+    "Pacote Documentação": "350.000 Kz",
+    "Pacote Completo": "400.000 Kz",
+  };
+  for (const [nome, preco] of Object.entries(precos))
+    await expect(page.locator("#pacotes article", { hasText: nome })).toContainText(`Preço: ${preco}`);
 });
 
 test("FAQ abre e fecha uma resposta", async ({ page }) => {

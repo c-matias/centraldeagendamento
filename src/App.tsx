@@ -26,9 +26,21 @@ export default function App() {
   useEffect(() => {
     const h = window.location.hash;
     if (!h) return;
-    const go = () => document.querySelector(h)?.scrollIntoView({ behavior: "instant" as ScrollBehavior });
-    const t = [setTimeout(go, 50), setTimeout(go, 800)];
-    return () => t.forEach(clearTimeout);
+    // O layout só assenta quando as imagens e secções acima carregam: repete o scroll, mas pára assim que o utilizador mexer.
+    let userMoved = false;
+    const stop = () => {
+      userMoved = true;
+    };
+    const events = ["wheel", "touchstart", "keydown", "mousedown"] as const;
+    for (const e of events) window.addEventListener(e, stop, { passive: true, once: true });
+    const go = () => {
+      if (!userMoved) document.querySelector(h)?.scrollIntoView({ behavior: "instant" as ScrollBehavior });
+    };
+    const t = [50, 400, 900, 1800, 3000].map((ms) => setTimeout(go, ms));
+    return () => {
+      for (const id of t) clearTimeout(id);
+      for (const e of events) window.removeEventListener(e, stop);
+    };
   }, []);
   return (
     <ErrorBoundary>

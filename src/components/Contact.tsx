@@ -1,13 +1,14 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { Check, Clock, Facebook, Instagram, Loader2, Mail, MapPin, MessageCircle, Music2, Phone, Send } from "lucide-react";
 import { type FormEvent, useEffect, useState } from "react";
-import { FORM_TYPES, SITE } from "../config/site";
+import { FORM_TYPES, SITE, X_LABEL } from "../config/site";
 import { waLink } from "../lib/whatsapp";
 import { track } from "../observability";
 import { Section } from "./ui";
+import XIcon from "./XIcon";
 
 const field =
-  "mb-4 w-full rounded-xl border border-brand-line bg-white px-3.5 py-3 text-brand-ink outline-none transition duration-200 focus:border-brand-royal focus:ring-4 focus:ring-brand-royal/15";
+  "mb-4 w-full rounded-xl border border-brand-line bg-surface px-3.5 py-3 text-brand-ink outline-none transition duration-200 focus:border-brand-royal focus:ring-4 focus:ring-brand-royal/15";
 const rows = [
   { icon: MessageCircle, label: "WhatsApp", value: SITE.phoneLabel, href: waLink() },
   { icon: Phone, label: "Telefone", value: SITE.phoneLabel, href: `tel:${SITE.phone}` },
@@ -15,6 +16,7 @@ const rows = [
   { icon: Instagram, label: "Instagram", value: SITE.social.instagram.handle, href: SITE.social.instagram.url },
   { icon: Facebook, label: "Facebook", value: SITE.social.facebook.handle, href: SITE.social.facebook.url },
   { icon: Music2, label: "TikTok", value: SITE.social.tiktok.handle, href: SITE.social.tiktok.url },
+  { icon: XIcon, label: "X", value: SITE.social.x.handle, href: SITE.social.x.url, x: true },
   { icon: Clock, label: "Horário de atendimento", value: SITE.hours, href: undefined },
   { icon: MapPin, label: "Localização", value: SITE.location, href: undefined },
 ];
@@ -44,10 +46,11 @@ export default function Contact() {
     <Section id="contactos" eyebrow="Contactos" title="Entre em contacto connosco" className="pt-0">
       <div className="mt-10 grid gap-11 text-left lg:grid-cols-[1fr_1.1fr]">
         <ul>
-          {rows.map(({ icon: Icon, label, value, href }) => {
+          {rows.map((r) => {
+            const { icon: Icon, label, value, href } = r;
             const inner = (
               <>
-                <Icon className="shrink-0 text-brand-royal" />
+                <Icon className="shrink-0 text-fg-royal" />
                 <span>
                   <b className="block">{label}</b>
                   <small className="break-all text-brand-muted sm:break-normal">{value}</small>
@@ -58,7 +61,13 @@ export default function Contact() {
             return (
               <li key={label}>
                 {href ? (
-                  <a href={href} target={href.startsWith("http") ? "_blank" : undefined} rel="noopener" className={cls}>
+                  <a
+                    href={href}
+                    target={href.startsWith("http") ? "_blank" : undefined}
+                    rel={"x" in r ? "noopener noreferrer" : "noopener"}
+                    aria-label={"x" in r ? X_LABEL : undefined}
+                    className={cls}
+                  >
                     {inner}
                   </a>
                 ) : (
@@ -68,7 +77,7 @@ export default function Contact() {
             );
           })}
         </ul>
-        <form onSubmit={submit} className="rounded-3xl border border-brand-line bg-white p-7 shadow-card">
+        <form onSubmit={submit} className="rounded-3xl border border-brand-line bg-surface p-7 shadow-card">
           <label htmlFor="nome" className="mb-1.5 block text-sm font-semibold">
             Nome completo
           </label>

@@ -15,7 +15,7 @@ function Item({ q, a, delay }: { q: string; a: string; delay: number }) {
       animate={shown}
       exit={leave}
       transition={{ ...SPRING, delay }}
-      className={`mb-3 rounded-2xl border bg-white px-5 transition-colors duration-200 ${open ? "border-brand-royal" : "border-brand-line"}`}
+      className={`mb-3 rounded-2xl border bg-surface px-5 transition-colors duration-200 ${open ? "border-brand-royal" : "border-brand-line"}`}
     >
       <button
         type="button"
@@ -27,7 +27,7 @@ function Item({ q, a, delay }: { q: string; a: string; delay: number }) {
         <Plus
           aria-hidden
           size={22}
-          className={`shrink-0 text-brand-royal transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] ${open ? "rotate-45" : ""}`}
+          className={`shrink-0 text-fg-royal transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] ${open ? "rotate-45" : ""}`}
         />
       </button>
       {/* abre/fecha sem animar height: grid-template-rows 0fr→1fr */}
@@ -59,7 +59,7 @@ export default function Faq() {
               type="button"
               onClick={() => setAll(!all)}
               aria-expanded={all}
-              className="rounded-full border-2 border-brand px-6 py-3 font-semibold text-brand transition duration-150 hover:bg-brand-soft active:scale-[0.98]"
+              className="rounded-full border-2 border-fg-brand px-6 py-3 font-semibold text-fg-brand transition duration-150 hover:bg-brand-soft active:scale-[0.98]"
             >
               {all ? "Ver menos perguntas" : `Ver todas as perguntas (${FAQ.length})`}
             </button>

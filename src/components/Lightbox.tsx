@@ -22,7 +22,7 @@ export default function Lightbox({ items, index, onIndex, onClose }: Props) {
     if (e.key === "ArrowRight") go(1);
   };
   const btn =
-    "grid h-11 w-11 place-items-center rounded-full bg-white/90 text-brand transition duration-150 hover:bg-white active:scale-95";
+    "grid h-11 w-11 place-items-center rounded-full bg-white/90 text-brand-dark transition duration-150 hover:bg-white active:scale-95";
 
   return (
     <dialog
@@ -57,7 +57,7 @@ export default function Lightbox({ items, index, onIndex, onClose }: Props) {
               >
                 <ChevronRight size={22} />
               </button>
-              <p className="absolute bottom-4 left-1/2 -translate-x-1/2 rounded-full bg-white/90 px-3 py-1 text-sm text-brand">
+              <p className="absolute bottom-4 left-1/2 -translate-x-1/2 rounded-full bg-white/90 px-3 py-1 text-sm text-brand-dark">
                 {(index ?? 0) + 1} / {items.length}
               </p>
             </>

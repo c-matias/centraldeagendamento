@@ -11,11 +11,15 @@ export const SITE = {
     instagram: { url: "https://www.instagram.com/central_de_agendamento", handle: "@central_de_agendamento" },
     facebook: { url: "https://www.facebook.com/share/1FBJznR2wA/", handle: "Central de Agendamento" },
     tiktok: { url: "https://www.tiktok.com/@centraldeagendamento", handle: "@centraldeagendamento" },
+    x: { url: "https://x.com/central_de_", handle: "@central_de_" },
   },
   hours: "Seg à Dom: 09:00 - 20:00 ",
   location: "Luanda, Angola - (Remoto)",
   showProcessTypes: true, // false remove a secção "Tipos de processo"
 };
+
+/** Descrição acessível do link do X (usada na secção, rodapé e contactos). */
+export const X_LABEL = "Visitar a Central de Agendamento no X";
 
 export const LEGAL_LINKS = [
   ["Política de Privacidade", "/politica-de-privacidade"],

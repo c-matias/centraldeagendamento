@@ -1,12 +1,52 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* ===== Tema (claro por omissão; .dark no <html> activa o modo escuro) =====
+ * Valores RGB separados por espaço (para o Tailwind aplicar opacidade). Só azuis, brancos e cinzentos — NUNCA vermelho. */
+:root {
+  color-scheme: light;
+  --page: 255 255 255;
+  --surface: 255 255 255;
+  --soft: 245 247 250;
+  --ink: 20 32 46;
+  --muted: 90 107 124;
+  --line: 225 230 239;
+  --brand: 16 16 112;
+  --brand-dark: 0 10 96;
+  --royal: 35 80 217;
+  --sky: 127 176 255;
+  --fg-brand: 16 16 112;
+  --fg-royal: 35 80 217;
+  --shadow-card: 0 8px 30px rgba(16, 16, 112, 0.1);
+  --skeleton: #e7ecf4;
+  --shimmer: rgba(255, 255, 255, 0.7);
+}
+.dark {
+  color-scheme: dark;
+  --page: 10 16 32;
+  --surface: 18 28 51;
+  --soft: 14 22 42;
+  --ink: 230 237 247;
+  --muted: 163 177 198;
+  --line: 36 51 82;
+  --brand: 36 71 184;
+  --brand-dark: 5 10 40;
+  --royal: 58 102 232;
+  --sky: 127 176 255;
+  --fg-brand: 169 196 255;
+  --fg-royal: 127 166 255;
+  --shadow-card: 0 8px 30px rgba(0, 0, 0, 0.4);
+  --skeleton: #16223d;
+  --shimmer: rgba(255, 255, 255, 0.07);
+}
+
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 80px;
 }
 body {
-  @apply bg-white text-brand-ink antialiased overflow-x-hidden;
+  @apply bg-page text-brand-ink antialiased overflow-x-hidden;
 }
 h1,
 h2,
@@ -18,7 +58,7 @@ p {
   text-wrap: pretty;
 }
 :focus-visible {
-  outline: 3px solid #2350d9;
+  outline: 3px solid rgb(var(--fg-royal));
   outline-offset: 3px;
 }
 @media (prefers-reduced-motion: reduce) {
@@ -31,14 +71,14 @@ p {
 .skeleton {
   position: relative;
   overflow: hidden;
-  background: #e7ecf4;
+  background: var(--skeleton);
 }
 .skeleton::after {
   content: "";
   position: absolute;
   inset: 0;
   transform: translateX(-100%);
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.7), transparent);
+  background: linear-gradient(90deg, transparent, var(--shimmer), transparent);
   animation: shimmer 1.4s ease-in-out infinite;
 }
 @keyframes shimmer {
@@ -81,4 +121,16 @@ p {
 }
 .lightbox-in {
   animation: lb-in 0.2s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Mudança de tema suave (só durante a troca; desligada com "reduzir movimento") */
+@media (prefers-reduced-motion: no-preference) {
+  html.theme-transition,
+  html.theme-transition *,
+  html.theme-transition *::before,
+  html.theme-transition *::after {
+    transition-property: background-color, color, border-color, fill, stroke, box-shadow, opacity !important;
+    transition-duration: 0.25s !important;
+    transition-timing-function: ease !important;
+  }
 }

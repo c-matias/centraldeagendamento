@@ -3,10 +3,12 @@ import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import ErrorBoundary from "../components/ErrorBoundary";
 import "../index.css";
+import { initTheme } from "../lib/theme";
 import { startObservability } from "../observability";
 import PrivacyPage from "./PrivacyPage";
 import TermsPage from "./TermsPage";
 
+initTheme();
 startObservability();
 
 const root = document.getElementById("root");

@@ -8,11 +8,11 @@ import { Button, Container, Reveal } from "./ui";
 
 export default function Hero() {
   return (
-    <section id="inicio" className="bg-gradient-to-b from-brand-soft to-white pb-14 pt-8 md:pb-20 md:pt-14">
+    <section id="inicio" className="bg-gradient-to-b from-brand-soft to-page pb-14 pt-8 md:pb-20 md:pt-14">
       <Container className="grid items-center gap-10 lg:grid-cols-[1.05fr_.95fr] lg:gap-14">
         <Reveal>
-          <p className="mb-3 text-sm font-semibold text-brand-royal">Apoio a processos de visto em Angola</p>
-          <h1 className="text-balance text-[2.1rem] leading-[1.12] tracking-tight text-brand sm:text-5xl md:text-6xl">
+          <p className="mb-3 text-sm font-semibold text-fg-royal">Apoio a processos de visto em Angola</p>
+          <h1 className="text-balance text-[2.1rem] leading-[1.12] tracking-tight text-fg-brand sm:text-5xl md:text-6xl">
             O seu processo de agendamento começa aqui.
           </h1>
           <p className="mt-5 max-w-xl text-base text-brand-muted sm:text-lg">
@@ -30,7 +30,7 @@ export default function Hero() {
           <ul className="flex flex-wrap gap-x-5 gap-y-2 text-sm text-brand-muted">
             {["Atendimento personalizado", "Orientação", "Acompanhamento"].map((t) => (
               <li key={t} className="flex items-center gap-1.5">
-                <Check size={16} className="text-brand-royal" />
+                <Check size={16} className="text-fg-royal" />
                 {t}
               </li>
             ))}
@@ -53,9 +53,9 @@ export default function Hero() {
             initial={hidden}
             animate={shown}
             transition={{ ...SPRING, delay: 0.45 }}
-            className="absolute inset-x-4 bottom-4 rounded-2xl bg-white/95 p-4 shadow-card backdrop-blur sm:right-auto sm:w-72"
+            className="absolute inset-x-4 bottom-4 rounded-2xl bg-surface/95 p-4 shadow-card backdrop-blur sm:right-auto sm:w-72"
           >
-            <b className="block text-brand">Acompanhamento</b>
+            <b className="block text-fg-brand">Acompanhamento</b>
             <span className="text-sm text-brand-muted">Do agendamento ao dia do atendimento.</span>
           </motion.div>
         </div>

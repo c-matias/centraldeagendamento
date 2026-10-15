@@ -1,6 +1,6 @@
 /** Contrato de arquitectura (camadas). Corre com: npm run arch */
 const SECTIONS = "About|Cta|Contact|Faq|Footer|Gallery|Hero|Navbar|Packages|PriceTable|Services|Social|Steps|Testimonials";
-const SHARED = "ui|media|Logo|Deferred|ErrorBoundary|WhatsAppFab|Carousel|Lightbox";
+const SHARED = "ui|media|Logo|Deferred|ErrorBoundary|WhatsAppFab|Carousel|Lightbox|ThemeToggle";
 
 /** @type {import('dependency-cruiser').IConfiguration} */
 module.exports = {

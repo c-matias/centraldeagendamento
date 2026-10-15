@@ -35,7 +35,7 @@ export default function PriceTable() {
             setOpen(0);
           }}
           aria-label="Ampliar a tabela de preços"
-          className="group relative block w-full cursor-zoom-in rounded-2xl border border-brand-line bg-white p-2 text-left shadow-card transition duration-150 hover:border-brand-royal sm:p-3"
+          className="group relative block w-full cursor-zoom-in rounded-2xl border border-brand-line bg-surface p-2 text-left shadow-card transition duration-150 hover:border-brand-royal sm:p-3"
         >
           <LazyImage
             src={src}
@@ -47,7 +47,7 @@ export default function PriceTable() {
             imgClassName="!object-contain"
             style={{ aspectRatio: ratio }}
           />
-          <span className="pointer-events-none absolute bottom-4 right-4 inline-flex items-center gap-1.5 rounded-full bg-white/95 px-3 py-1.5 text-xs font-semibold text-brand shadow-card sm:text-sm">
+          <span className="pointer-events-none absolute bottom-4 right-4 inline-flex items-center gap-1.5 rounded-full bg-surface/95 px-3 py-1.5 text-xs font-semibold text-fg-brand shadow-card sm:text-sm">
             <ZoomIn size={16} aria-hidden /> Ampliar
           </span>
         </button>

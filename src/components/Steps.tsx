@@ -33,7 +33,7 @@ export function Steps() {
             <span className="absolute left-0 top-0 z-10 grid h-11 w-11 place-items-center rounded-full bg-brand font-bold text-white ring-[6px] ring-brand-soft lg:relative lg:mx-auto lg:mb-4">
               0{i + 1}
             </span>
-            <h3 className="mb-1 text-base text-brand">{title}</h3>
+            <h3 className="mb-1 text-base text-fg-brand">{title}</h3>
             <p className="text-sm text-brand-muted">{text}</p>
           </motion.li>
         ))}

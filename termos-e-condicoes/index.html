@@ -12,6 +12,23 @@
 <meta property="og:locale" content="pt_AO" />
 <link rel="icon" type="image/png" href="/images/favicon.png" />
 <meta name="theme-color" content="#101070" />
+<meta name="color-scheme" content="light dark" />
+<script>
+/* Tema antes da primeira pintura (sem flash): preferência guardada ou, na 1.ª visita, a do sistema. Ver src/lib/theme.ts */
+(function () {
+  try {
+    var t = localStorage.getItem("ca:theme");
+    var dark = t ? t === "dark" : window.matchMedia("(prefers-color-scheme: dark)").matches;
+    if (dark) {
+      document.documentElement.classList.add("dark");
+      document.documentElement.style.colorScheme = "dark";
+      var m = document.querySelector('meta[name="theme-color"]');
+      if (m) m.setAttribute("content", "#0A1020");
+    }
+  } catch (e) {}
+})();
+</script>
+<style>html.dark{background:#0a1020}</style>
 </head>
 <body data-page="termos">
 <div id="root"></div>

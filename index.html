@@ -13,8 +13,26 @@
 <!-- TODO: og:image e og:url quando houver domínio -->
 <link rel="icon" type="image/png" href="/images/favicon.png" />
 <meta name="theme-color" content="#101070" />
+<meta name="color-scheme" content="light dark" />
+<script>
+/* Tema antes da primeira pintura (sem flash): preferência guardada ou, na 1.ª visita, a do sistema. Ver src/lib/theme.ts */
+(function () {
+  try {
+    var t = localStorage.getItem("ca:theme");
+    var dark = t ? t === "dark" : window.matchMedia("(prefers-color-scheme: dark)").matches;
+    if (dark) {
+      document.documentElement.classList.add("dark");
+      document.documentElement.style.colorScheme = "dark";
+      var m = document.querySelector('meta[name="theme-color"]');
+      if (m) m.setAttribute("content", "#0A1020");
+    }
+  } catch (e) {}
+})();
+</script>
+<style>html.dark{background:#0a1020}</style>
 <style>
 .boot{max-width:1152px;margin:0 auto;padding:20px}.boot>div{position:relative;overflow:hidden;background:#E7ECF4;border-radius:16px;margin-bottom:16px}
+html.dark .boot>div{background:#16223d}html.dark .boot>div:after{background:linear-gradient(90deg,transparent,rgba(255,255,255,.07),transparent)}
 .boot>div:after{content:"";position:absolute;inset:0;transform:translateX(-100%);background:linear-gradient(90deg,transparent,rgba(255,255,255,.7),transparent);animation:bs 1.4s ease-in-out infinite}
 @keyframes bs{to{transform:translateX(100%)}}.b1{height:52px}.b2{height:44vh}.b3{height:120px}
 @media (prefers-reduced-motion:reduce){.boot>div:after{display:none}}

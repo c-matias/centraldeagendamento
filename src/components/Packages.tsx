@@ -20,20 +20,20 @@ export default function Packages() {
             className="flex w-[82%] shrink-0 snap-center sm:w-[calc(50%-10px)] sm:shrink lg:w-[calc(33.333%-14px)]"
           >
             <article
-              className={`flex flex-1 flex-col rounded-2xl bg-white p-6 shadow-card transition hover:-translate-y-1 ${p.highlight ? "border-2 border-brand" : "border border-brand-line hover:border-brand-royal"}`}
+              className={`flex flex-1 flex-col rounded-2xl bg-surface p-6 shadow-card transition hover:-translate-y-1 ${p.highlight ? "border-2 border-fg-brand" : "border border-brand-line hover:border-brand-royal"}`}
             >
               {p.highlight && (
                 <span className="mb-3 self-start rounded-full bg-brand px-3 py-1 text-xs font-semibold text-white">Todos os serviços</span>
               )}
-              <h3 className="text-xl text-brand">{p.name}</h3>
-              <p className="mt-1 font-serif text-2xl font-bold text-brand-royal">
+              <h3 className="text-xl text-fg-brand">{p.name}</h3>
+              <p className="mt-1 font-serif text-2xl font-bold text-fg-royal">
                 <span className="sr-only">Preço: </span>
                 {p.price}
               </p>
               <ul className="my-4 grid gap-2.5 text-sm">
                 {p.items.map((i) => (
                   <li key={i} className="flex items-start gap-2.5">
-                    <Check size={18} className="mt-0.5 shrink-0 text-brand-royal" />
+                    <Check size={18} className="mt-0.5 shrink-0 text-fg-royal" />
                     {i}
                   </li>
                 ))}

@@ -19,7 +19,7 @@ export default class ErrorBoundary extends Component<{ children: ReactNode; labe
     if (!this.state.failed) return this.props.children;
     return (
       <div role="alert" className="mx-auto max-w-xl px-5 py-16 text-center">
-        <h2 className="font-serif text-2xl text-brand">Ocorreu um problema ao mostrar esta página</h2>
+        <h2 className="font-serif text-2xl text-fg-brand">Ocorreu um problema ao mostrar esta página</h2>
         <p className="mt-3 text-brand-muted">Pode recarregar a página ou falar connosco directamente pelo WhatsApp.</p>
         <button
           type="button"

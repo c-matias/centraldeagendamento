@@ -113,11 +113,20 @@ Detalhes em [`docs/GALERIA-CARROSSEL.md`](docs/GALERIA-CARROSSEL.md).
 - Preços dos pacotes: `PACKAGES[].price` em `src/config/site.ts`. Alterar só com confirmação do dono do projecto.
 - Pedir ao utilizador imagens leves (≤1600 px, <250 KB). Estados testados: com imagens, pasta vazia, imagem em falta (alternativa visível), ampliação, teclado, mobile. Sem vermelho.
 
-## 9. Checklist antes de pedir merge
+## 9. Tema claro/escuro e redes sociais
+- **Tema:** botão sol/lua no cabeçalho (`ThemeToggle.tsx`), lógica em `src/lib/theme.ts`. Preferência em `localStorage` (`ca:theme`: `light`|`dark`); na 1.ª visita segue o sistema operativo; um script no `<head>` de cada HTML (`index.html` e páginas legais) aplica a classe `dark` ao `<html>` antes da primeira pintura (sem flash). **Qualquer HTML novo tem de levar esse script.**
+- **Cores = variáveis CSS** (`src/index.css`, `:root` e `.dark`) ligadas ao Tailwind (`tailwind.config.js`). **Nunca** usar hex nem `bg-white`/`text-white` para superfícies de conteúdo. Usar os tokens: fundo da página `bg-page`; cartões/menus/campos `bg-surface`; secções alternadas `bg-brand-soft`; texto `text-brand-ink` / `text-brand-muted`; **títulos, links e ícones azuis `text-fg-brand` / `text-fg-royal`**; bordas `border-brand-line`; botões e faixas azuis `bg-brand` / `bg-brand-royal` com `text-white`. Branco fixo (`bg-white`) só em elementos que ficam sobre azul/overlay escuro (botão claro do CTA, botões do visualizador) e então com `text-brand-dark`.
+- **Proibido vermelho** em qualquer modo (testes de paleta e e2e falham se aparecer). Os pares de cores têm de manter contraste WCAG AA (`src/theme-palette.test.ts` e axe nos dois modos).
+- Componente novo: verificar nos dois modos, em ≈390 px e em desktop, e acrescentá-lo ao teste e2e `theme.spec.ts` se for uma superfície nova.
+- **Redes sociais:** ligações em `SITE.social` (`src/config/site.ts`): Instagram, Facebook, TikTok e X (`https://x.com/central_de_`). Adicionar uma rede = acrescentar ali e nos 4 sítios que as listam (secção `Social`, `Footer`, `Contact` e `LegalLayout`). Links externos com `target="_blank"` e `rel="noopener"` (o X usa `noopener noreferrer`). O ícone do X é `XIcon.tsx` (a lucide-react não o tem).
+- Privacidade: o `localStorage` guarda só a preferência de tema (sem dados pessoais); se a empresa rever a Política de Privacidade, pode mencioná-lo na secção *Cookies*.
+
+## 10. Checklist antes de pedir merge
 - [ ] Existe Issue e o PR tem `Closes #n`
 - [ ] `npm run build` e `npm run check` passam (Biome, tipos, arquitectura, Knip, testes + cobertura)
 - [ ] e2e (`npm run e2e`) passa quando há mudança de UI/fluxo
 - [ ] Testado em ≈390 px e em desktop (Deploy Preview)
+- [ ] Verificado nos modos claro e escuro (contraste AA, sem vermelho)
 - [ ] Sem vermelho, sem informação inventada, aviso de transparência intacto
 - [ ] Nova UI com skeleton, lazy-loading, entrada/saída suaves e `prefers-reduced-motion` (secção 5)
 - [ ] Sem ficheiros grandes/desnecessários (`node_modules`, `dist`)

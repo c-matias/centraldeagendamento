@@ -43,7 +43,7 @@ function Slide({ item, onOpen }: { item: GalleryItem; onOpen: () => void }) {
 
 function Message({ children, action }: { children: string; action?: React.ReactNode }) {
   return (
-    <div role="status" className="mx-auto mt-10 max-w-xl rounded-2xl border border-brand-line bg-white p-6 text-center shadow-card">
+    <div role="status" className="mx-auto mt-10 max-w-xl rounded-2xl border border-brand-line bg-surface p-6 text-center shadow-card">
       <p className="text-brand-muted">{children}</p>
       {action && <div className="mt-4 flex flex-col items-center justify-center gap-3 sm:flex-row">{action}</div>}
     </div>
